@@ -1,6 +1,6 @@
 class Solution {
     public int subtractProductAndSum(int n) {
-        int i, remainder, sum = 0;
+        int remainder, sum = 0;
         int product = 1;
 
         while (n > 0) {
