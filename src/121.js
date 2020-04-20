@@ -10,7 +10,7 @@ var maxProfit = function(P) {
         if(P[i] < minprice) {
             minprice = P[i];
         } else if(P[i] - minprice > maxprofit) {
-           maxprofit = P[i] - minprice;       
+           maxprofit = P[i] - minprice;
         }
     }
     
