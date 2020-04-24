@@ -1,20 +1,22 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// First tried using bits first which didn't work at all. Moved to string sorting which works "okay"
+// (50% faster). However, TIL about prime multiplication which is optimal for time-complexity.
+// See: https://stackoverflow.com/questions/18781106/generate-same-unique-hash-code-for-all-anagrams
 class Solution {
+    private static final int[] PRIMES = new int[] {2, 3, 5, 7, 11 ,13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 107};
+
     public List<List<String>> groupAnagrams(String[] strs) {
-        Map<String, List<String>> map = new HashMap<>();
+        Map<Integer, List<String>> map = new HashMap<>();
 
         for (int i = 0; i < strs.length; i++) {
-            String key = "";
+            int key = 1;
 
             for (int j = 0; j < strs[i].length(); j++) {
-                char[] chars = strs[i].toCharArray();
-                Arrays.sort(chars);
-                key = new String(chars);
+                key *= PRIMES[strs[i].charAt(j) - 'a'];
             }
 
             List<String> list = map.getOrDefault(key, new ArrayList<String>());
