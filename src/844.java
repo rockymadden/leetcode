@@ -32,7 +32,7 @@ class Solution {
                 }
             }
 
-            if ((s >= 0 ? S.charAt(s) : "") != (t >= 0 ? T.charAt(t) : "")) {
+            if ((s >= 0 ? S.charAt(s) : '\0') != (t >= 0 ? T.charAt(t) : '\0')) {
                 return false;
             }
 
