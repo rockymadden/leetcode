@@ -6,11 +6,11 @@ class Solution {
         Queue<Integer> q = new PriorityQueue<>(A.length);
 
         for (int i = 0; i < A.length; i++) {
-            q.offer((int) Math.pow(A[i], 2));
+            q.offer(A[i] * A[i]);
         }
 
         for (int i = 0; i < A.length; i++) {
-            A[i] = (int) q.poll();
+            A[i] = q.poll();
         }
 
         return A;

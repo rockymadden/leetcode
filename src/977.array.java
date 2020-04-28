@@ -3,7 +3,7 @@ import java.util.Arrays;
 class Solution {
     public int[] sortedSquares(int[] A) {
         for (int i = 0; i < A.length; i++) {
-            A[i] = (int) Math.pow(A[i], 2);
+            A[i] = A[i] * A[i];
         }
 
         Arrays.sort(A);
