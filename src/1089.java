@@ -9,9 +9,7 @@ class Solution {
             } else {
                 copy[j++] = arr[i];
             }
-        }
 
-        for (int i = 0; i < arr.length; i++) {
             arr[i] = copy[i];
         }
     }
