@@ -1,5 +1,5 @@
 class Solution {
-    private boolean common(int[] row, int val) {
+    private boolean find(int[] row, int val) {
         int low = 0;
         int high = row.length - 1;
 
@@ -21,17 +21,21 @@ class Solution {
     public int smallestCommonElement(int[][] mat) {
         if (mat.length == 1) return mat[0][0];
 
-        for (int i = 0; i < mat[0].length; i++) {
-            int element = mat[0][i];
-            int count = 0;
+        int n = mat.length;
+        int m = mat[0].length;
 
-            for (int j = 1; j < mat.length; j++) {
-                if (common(mat[j], element)) count++;
+        for (int i = 0; i < m; i++) {
+            int element = mat[0][i];
+            boolean found = true;
+
+            for (int j = 1; j < n && found; j++) {
+                found = find(mat[j], element);
             }
 
-            if (count + 1 == mat.length) return element;
+            if (found) return element;
         }
 
         return -1;
     }
 }
+
