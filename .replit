@@ -1,2 +1,2 @@
-language = "bash"
-run = "true"
+language = "java"
+run = "mvn test"

@@ -1,5 +1,0 @@
-image: gitpod/workspace-full:latest
-
-github:
-  prebuilds:
-    master: true
