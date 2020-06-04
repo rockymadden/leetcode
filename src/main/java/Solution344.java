@@ -1,4 +1,4 @@
-public class Solution344ViaTwoPointers {
+public class Solution344 {
     public void reverseString(char[] s) {
         int left = 0, right = s.length - 1;
 
