@@ -1,20 +1,15 @@
 public class Solution167ViaTwoPointers {
     public int[] twoSum(int[] numbers, int target) {
-        int low = 0;
-        int high = numbers.length - 1;
+        int left = 0, right = numbers.length - 1;
 
-        while (low < high) {
-            int sum = numbers[low] + numbers[high];
+        while (left < right) {
+            int sum = numbers[left] + numbers[right];
 
-            if (sum == target) {
-                return new int[]{low + 1, high + 1};
-            } else if (sum > target) {
-                high--;
-            } else {
-                low++;
-            }
+            if (sum == target) return new int[] {left + 1, right + 1};
+            else if (sum < target) left++;
+            else right--;
         }
 
-        return new int[]{-1, -1};
+        return new int[] {-1, -1};
     }
 }
