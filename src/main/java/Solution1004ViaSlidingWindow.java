@@ -1,21 +1,27 @@
+/**
+ * Given an array A of 0s and 1s, we may change up to K values from 0 to 1.
+ *
+ * Return the length of the longest (contiguous) subarray that contains only 1s.
+ */
 public class Solution1004ViaSlidingWindow {
+    /**
+     * Time-complexity: O(n)
+     * Space-complexity: O(1)
+     */
     public int longestOnes(int[] A, int K) {
-        int zeros = 0;
-        int longest = 0;
+        int max = 0;
 
-        for (int end = 0, start = 0, cnt = 0; end < A.length; end++) {
-            if (A[end] == 0) zeros++;
-            cnt++;
+        for (int end = 0, start = 0, zeros = 0; end < A.length; end++) {
+            zeros += (A[end] ^ 1);
 
             while (zeros > K) {
-                if (A[start] == 0) zeros--;
-                cnt--;
+                zeros -= (A[start] ^ 1);
                 start++;
             }
 
-            longest = Math.max(longest, cnt);
+            max = Math.max(max, end - start + 1);
         }
 
-        return longest;
+        return max;
     }
 }
