@@ -3,11 +3,12 @@ import java.util.*;
 /**
  * Given three integer arrays arr1, arr2 and arr3 sorted in strictly increasing order, return a
  * sorted array of only the integers that appeared in all three arrays.
- *
- * Time-complexity: O(n)
- * Space-complexity: O(1)
  */
 public class Solution1213 {
+    /**
+     * Time-complexity: O(n)
+     * Space-complexity: O(1)
+     */
     public List<Integer> arraysIntersection(int[] arr1, int[] arr2, int[] arr3) {
         List<Integer> ans = new ArrayList<>();
         int a = 0, b = 0, c = 0;
