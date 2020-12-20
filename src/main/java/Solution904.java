@@ -1,22 +1,23 @@
-import java.util.*;
-
-public class Solution904 {
+class Solution904 {
     public int totalFruit(int[] tree) {
-        Map<Integer, Integer> baskets = new HashMap<>();
+        int[] baskets = new int[tree.length];
         int max = 0;
 
-        for (int end = 0, start = 0; end < tree.length; end++) {
+        for (int end = 0, start = 0, cnt = 0, size = 0; end < tree.length; end++) {
             int endFruit = tree[end];
-            baskets.put(endFruit, baskets.getOrDefault(endFruit, 0) + 1);
+            if (baskets[endFruit] == 0) size++;
+            baskets[endFruit]++;
+            cnt++;
 
-            while (baskets.size() > 2) {
+            while (size > 2) {
                 int startFruit = tree[start];
-                baskets.put(startFruit, baskets.get(startFruit) - 1);
-                if (baskets.get(startFruit) < 1) baskets.remove(startFruit);
+                if (baskets[startFruit] == 1) size--;
+                baskets[startFruit]--;
                 start++;
+                cnt--;
             }
 
-            max = Math.max(max, end - start + 1);
+            max = Math.max(max, cnt);
         }
 
         return max;
