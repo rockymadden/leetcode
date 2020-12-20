@@ -14,6 +14,6 @@ class Solution:
                 a += 'al'
                 i += 2
             elif c != '(':
-                a += "o"
+                a += 'o'
 
         return a
