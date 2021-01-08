@@ -1,33 +1,32 @@
-import java.util.*;
 
 public class Solution3 {
-    private boolean hasRepeat(Map<Character, Integer> freq) {
-        for (Integer count : freq.values()) {
-            if (count > 1) return true;
-        }
-
-        return false;
-    }
-
     public int lengthOfLongestSubstring(String s) {
-        Map<Character, Integer> freq = new HashMap<>();
-        int start = 0, longest = 0;
-        char endChar, startChar;
+        final int [] frq = new int[128];
+        final int n = s.length();
+        int ans = 0;
 
-        for (int end = 0; end < s.length(); end++) {
-            endChar = s.charAt(end);
-            freq.put(endChar, freq.getOrDefault(endChar, 0) + 1);
+        for (int end = 0, start = 0, dst = 0, cnt = 0; end < n; end++) {
+            final char endChar = s.charAt(end);
 
-            while (start < end && hasRepeat(freq)) {
-                startChar = s.charAt(start);
-                freq.put(startChar, freq.get(startChar) - 1);
-                if (freq.get(startChar) == 0) freq.remove(startChar);
-                start++;
+            if (frq[endChar] == 0) dst++;
+            else dst--;
+
+            frq[endChar]++;
+            cnt++;
+
+            while (cnt > dst) {
+                final char startChar = s.charAt(start++);
+
+                if (frq[startChar] == 2) dst++;
+                else if (frq[startChar] == 1) dst--;
+
+                frq[startChar]--;
+                cnt--;
             }
 
-            longest = Math.max(longest, end - start + 1);
+            ans = Math.max(ans, end - start + 1);
         }
 
-        return longest;
+        return ans;
     }
 }
