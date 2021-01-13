@@ -6,7 +6,6 @@ public class Solution12 {
         if (num < 1 || num > 3999) return "";
 
         final StringBuilder sb = new StringBuilder();
-
         int i = 0;
 
         while (num > 0 && i < SYMBOLS.length) {
@@ -16,7 +15,6 @@ public class Solution12 {
             for (int j = 0; j < times; j++) sb.append(SYMBOLS[i]);
             i++;
         }
-
 
         return sb.toString();
     }
