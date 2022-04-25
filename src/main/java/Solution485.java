@@ -4,14 +4,10 @@ public class Solution485 {
         int cur = 0;
 
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 1) {
-                cur += 1;
-            } else {
-                max = Math.max(max, cur);
-                cur = 0;
-            }
+            cur = nums[i] == 1 ? cur + 1 : 0;
+            max = Math.max(max, cur);
         }
 
-        return Math.max(max, cur);
+        return max;
     }
 }
