@@ -5,6 +5,7 @@ public class Solution208ViaHashMap {
         private Node root;
 
         private class Node {
+            @SuppressWarnings("unused")
             public Character letter;
             public Map<Character, Node> children;
 
